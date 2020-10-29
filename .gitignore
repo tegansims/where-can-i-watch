@@ -11,3 +11,11 @@ web-build/
 
 # macOS
 .DS_Store
+
+build/
+dist/
+node_modules/
+
+#lock files
+package-lock.json
+yarn.lock
