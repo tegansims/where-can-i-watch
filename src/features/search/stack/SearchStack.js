@@ -4,6 +4,7 @@ import { View, Button } from "react-native"
 import { Text } from "react-native-paper"
 import BaseLayout from "../../../layouts/BaseLayout"
 import SearchContainer from "../containers/Search"
+import Results from "../views/Results"
 
 const SearchStack = createStackNavigator()
 
@@ -11,25 +12,23 @@ const SearchList = ({ navigation }) => (
   <BaseLayout>
     <Text>SearchList</Text>
     <Button
-      onPress={() => navigation.navigate("SearchContainer")}
+      onPress={() => navigation.navigate("Search")}
       title="To Search Component!"
     />
   </BaseLayout>
 )
 
-
-
 const Search = () => (
   <SearchStack.Navigator>
-    {/* <SearchStack.Screen
-      name="SearchList"
-      component={SearchList}
-      options={{ tabBarLabel: "SearchList!" }}
-    /> */}
     <SearchStack.Screen
-      name="SearchContainer"
+      name="Search"
       component={SearchContainer}
-      options={{ tabBarLabel: "SearchContainer!" }}
+      options={{ tabBarLabel: "Search!" }}
+    />
+    <SearchStack.Screen
+      name="Results"
+      component={Results}
+      options={{ tabBarLabel: "Results!" }}
     />
   </SearchStack.Navigator>
 )

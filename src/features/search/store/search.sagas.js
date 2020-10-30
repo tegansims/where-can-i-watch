@@ -134,8 +134,8 @@ const MOCK_RES = {
 
 export function* loadSearchSaga(action) {
   try {
-    const res = yield call(SearchService.loadSearch, {searchTerm: action.payload})
-    // const res = MOCK_RES
+    // const res = yield call(SearchService.loadSearch, {searchTerm: action.payload})
+    const res = MOCK_RES
     if (res) yield put(SearchActions.searchSuccess(res.data))
     else yield put(SearchActions.searchFail())
   } catch (err) {

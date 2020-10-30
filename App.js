@@ -27,7 +27,8 @@ const App = () => {
 
   const customTextProps = { 
     style: { 
-      fontFamily: "Karla_400Regular"
+      fontFamily: "Karla_400Regular",
+      color: "white"
     }
   }
 
