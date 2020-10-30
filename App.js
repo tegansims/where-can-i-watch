@@ -31,9 +31,9 @@ const App = () => {
     }
   }
 
-  setCustomText(customTextProps);
-
   if (!fontsLoaded) return <AppLoading />
+
+  setCustomText(customTextProps);
   
   return (
     <ErrorBoundary fallback={GenericErrorFallback}>
