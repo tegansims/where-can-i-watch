@@ -7,3 +7,5 @@ export const getSearchResults = createSelector(searchState, state => state?.sear
 export const getIsLoading = createSelector(searchState, state => state?.isLoading)
 
 export const getHasError = createSelector(searchState, state => state?.hasError)
+
+export const getDetails = createSelector(searchState, state => state?.details)

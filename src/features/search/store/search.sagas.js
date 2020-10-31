@@ -132,6 +132,64 @@ const MOCK_RES = {
   }
 }
 
+const MOCK_DETAILS_RES = {
+  data: {
+    id: "/title/tt0436992/",
+    title: {
+      "@type": "imdb.api.title.title",
+      id: "/title/tt0436992/",
+      image: {
+        height: 1500,
+        id: "/title/tt0436992/images/rm808881153",
+        url:
+          "https://m.media-amazon.com/images/M/MV5BZWJhYjFmZDEtNTVlYy00NGExLWJhZWItNTAxODY5YTc3MDFmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+        width: 1061
+      },
+      runningTimeInMinutes: 45,
+      nextEpisode: "/title/tt0562992/",
+      numberOfEpisodes: 190,
+      seriesStartYear: 2005,
+      title: "Doctor Who",
+      titleType: "tvSeries",
+      year: 2005
+    },
+    certificates: {
+      US: [
+        {
+          certificate: "TV-PG",
+          country: "US"
+        }
+      ]
+    },
+    ratings: {
+      canRate: true,
+      rating: 8.6,
+      ratingCount: 196607,
+      otherRanks: [
+        {
+          id: "/chart/ratings/toptv",
+          label: "Top 250 TV",
+          rank: 195,
+          rankType: "topTv"
+        }
+      ]
+    },
+    genres: ["Adventure", "Drama", "Family", "Mystery", "Sci-Fi"],
+    releaseDate: "2006-03-17",
+    plotOutline: {
+      id: "/title/tt0436992/plot/po1029503",
+      text:
+        "The further adventures in time and space of the alien adventurer known as the Doctor and their companions from planet Earth."
+    },
+    plotSummary: {
+      author: "Chris Wright",
+      id: "/title/tt0436992/plot/ps2240416",
+      text:
+        "The Doctor, a Time Lord/Lady from the race whose home planet is Gallifrey, travels through time and space in their ship the T.A.R.D.I.S. (an acronym for Time and Relative Dimension In Space) with numerous companions. From time to time The Doctor regenerates into a new form (which is how the series has been running since the departure of the original actor, William Hartnell, in 1966)."
+    }
+  }
+}
+
 export function* loadSearchSaga(action) {
   try {
     // const res = yield call(SearchService.loadSearch, {searchTerm: action.payload})
@@ -144,6 +202,24 @@ export function* loadSearchSaga(action) {
   }
 }
 
+export function* loadDetailsSaga(action) {
+  try {
+    // console.log("::SAGA: ", action.payload)
+    const res = MOCK_DETAILS_RES
+    // const res = yield call(SearchService.loadDetails, { id: action.payload })
+
+    // console.log('::SAGA saga res done')
+    // console.log("::SAGA res: ", res)
+
+    if (res) yield put(SearchActions.loadDetailsSuccess(res.data))
+    else yield put(SearchActions.loadDetailsFail())
+  } catch (err) {
+    console.log(err)
+    yield put(SearchActions.loadDetailsFail())
+  }
+}
+
 export function* saga() {
   yield takeLatest(SearchActions.types.SEARCH, loadSearchSaga)
+  yield takeLatest(SearchActions.types.LOAD_DETAILS, loadDetailsSaga)
 }
