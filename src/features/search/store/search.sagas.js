@@ -245,10 +245,10 @@ const res2 = {
 
 export function* loadSearchSaga(action) {
   try {
-    // const res = yield call(SearchService.loadSearch, {
-    //   searchTerm: action.payload
-    // })
-    const res = MOCK_RES
+    const res = yield call(SearchService.loadSearch, {
+      searchTerm: action.payload
+    })
+    // const res = MOCK_RES
     if (res) yield put(SearchActions.searchSuccess(res.data))
     else yield put(SearchActions.searchFail())
   } catch (err) {
@@ -260,8 +260,8 @@ export function* loadSearchSaga(action) {
 export function* loadDetailsSaga(action) {
   try {
     // const res = MOCK_DETAILS_RES
-    const res = res2
-    // const res = yield call(SearchService.loadDetails, { id: action.payload })
+    // const res = res2
+    const res = yield call(SearchService.loadDetails, { id: action.payload })
 
     if (res) yield put(SearchActions.loadDetailsSuccess(res.data))
     else yield put(SearchActions.loadDetailsFail())

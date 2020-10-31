@@ -31,13 +31,13 @@ const DetailsToShow = ({ setModalVisible, modalVisible, details }) => {
 
   const Description = () => (
     <ScrollView>
-      <Text style={{ ...styles.modalText, fontSize: 24, fontWeight: "700" }}>
+      <Text style={{ ...styles.modalText, fontSize: 28 }}>
         {details?.title?.title}
       </Text>
-      <Text style={{ ...styles.modalText, fontSize: 18 }}>
+      <Text style={{ ...styles.modalText, fontSize: 18, lineHeight: 20 }}>
         {details?.plotOutline?.text}
       </Text>
-      <Text style={{ ...styles.modalText, fontSize: 16 }}>
+      <Text style={{ ...styles.modalText, fontSize: 16}}>
         {details?.plotSummary?.text}
       </Text>
     </ScrollView>

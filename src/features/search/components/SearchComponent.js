@@ -25,18 +25,18 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
             fontFamily: "Karla_700Bold",
             fontSize: 38,
             textAlign: "center",
-            paddingBottom: 42,
-            lineHeight: 40,
+            paddingBottom: 38,
+            lineHeight: 50,
             color: "white"
           }}
         >
-          What are you wanting to watch today?
+          What do you want to watch today?
         </Title>
         <TextInput
           onChangeText={text => setSearchTerm(text)}
           value={searchTerm}
         />
-        <View paddingTop={28}>
+        <View paddingTop={48}>
           <TouchableOpacity paddingTop={24} onPress={handlePress}>
             <Text
               style={{

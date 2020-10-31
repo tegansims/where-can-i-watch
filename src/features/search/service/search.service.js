@@ -11,13 +11,6 @@ const detailsHeaders = {
   "x-rapidapi-key": "e2d554ecb8msh62122a83b015e31p126344jsn549fa3908955"
 }
 
-// export const loadSearch = ({ searchTerm, countryCode = "uk" }) => {
-//   console.log("::SERVICE: ", searchTerm)
-//   return axios.get(
-//     `https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=${searchTerm}&country=${countryCode}`
-//   )
-// }
-
 const SEARCH_URL =
   "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com"
 const DETAILS_URL = "https://imdb8.p.rapidapi.com/title/get-overview-details"

@@ -9,7 +9,7 @@ const MainStack = createStackNavigator()
 
 const SignedInContent = () => {
   const tabBarScreenOptions = ({ route }) => ({
-    tabBarIcon: ({ focused, color, size }) => {
+    tabBarIcon: ({ color, size }) => {
       let iconName
 
       if (route.name === "Search") {
@@ -45,13 +45,14 @@ const Main = () => {
   }, [setShowSplashScreen])
   if (showSplashScreen) return <screens.SplashScreen />
   return (
-    <MainStack.Navigator>
-      <MainStack.Screen
-        name="Main Content"
-        component={SignedInContent}
-        options={{ headerMode: "none", headerShown: false }}
-      />
-    </MainStack.Navigator>
+    <screens.Search />
+    // <MainStack.Navigator>
+    //   <MainStack.Screen
+    //     name="Main Content"
+    //     component={SignedInContent}
+    //     options={{ headerMode: "none", headerShown: false }}
+    //   />
+    // </MainStack.Navigator>
   )
 }
 
