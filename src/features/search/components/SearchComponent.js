@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { TextInput, Title } from "react-native-paper"
-import { View, Button } from "react-native"
+import { View, Button, TouchableOpacity, Text } from "react-native"
 import BaseLayout from "../../../layouts/BaseLayout"
 import { useFonts, Karla_700Bold } from "@expo-google-fonts/karla"
 
@@ -23,9 +23,9 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
         <Title
           style={{
             fontFamily: "Karla_700Bold",
-            fontSize: 36,
+            fontSize: 38,
             textAlign: "center",
-            paddingBottom: 32,
+            paddingBottom: 42,
             lineHeight: 40,
             color: "white"
           }}
@@ -36,13 +36,19 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
           onChangeText={text => setSearchTerm(text)}
           value={searchTerm}
         />
-        <Button
-          onPress={handlePress}
-          title="Search"
-          color="white"
-          accessibilityLabel="Search for TV shows or films"
-          mode="outlined"
-        />
+        <View paddingTop={28}>
+          <TouchableOpacity paddingTop={24} onPress={handlePress}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "600",
+                textAlign: "center"
+              }}
+            >
+              Search
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </BaseLayout>
   )

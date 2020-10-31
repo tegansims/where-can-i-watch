@@ -13,14 +13,19 @@ const Result = ({ item, loadDetails, navigation }) => {
     setModalVisible(true)
   }
   return (
-    <View marginBottom={12}>
+    <>
       <DetailsModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         navigation={navigation}
         {...item}
       />
-      <View flexDirection="row" marginBottom={18} alignItems="center">
+      <View
+        flexDirection="row"
+        marginBottom={18}
+        alignItems="center"
+        onStartShouldSetResponder={handlePress}
+      >
         <Image
           source={{
             uri: picture
@@ -31,11 +36,9 @@ const Result = ({ item, loadDetails, navigation }) => {
           style={{
             fontSize: 28,
             fontWeight: "600",
-            marginBottom: 12,
             paddingLeft: 14,
             flex: 1
           }}
-          onPress={handlePress}
         >
           {name}
         </Text>
@@ -47,7 +50,7 @@ const Result = ({ item, loadDetails, navigation }) => {
         >
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 20,
               marginBottom: 12
             }}
           >
@@ -55,8 +58,8 @@ const Result = ({ item, loadDetails, navigation }) => {
           </Text>
         </TouchableOpacity>
       ))}
-      <Divider style={{ marginVertical: 4, height: 1, color: "white" }} />
-    </View>
+      <Divider style={{ marginVertical: 12, height: 1, color: "white" }} />
+    </>
   )
 }
 
