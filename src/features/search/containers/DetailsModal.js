@@ -1,16 +1,13 @@
 import { connect } from "react-redux"
-import { SearchActions, SearchSelectors } from ".."
+import { SearchSelectors } from ".."
 import DetailsModalComponent from "../components/DetailsModal"
 
 const mapState = state => ({
   details: SearchSelectors.getDetails(state),
-  hasError: SearchSelectors.getHasError(state),
-  isLoading: SearchSelectors.getIsLoading(state)
-
+  hasError: SearchSelectors.getHasErrorDetails(state),
+  isLoading: SearchSelectors.getIsLoadingDetails(state)
 })
 
-const mapDispatch = dispatch => ({})
-
-const DetailsModal = connect(mapState, mapDispatch)(DetailsModalComponent)
+const DetailsModal = connect(mapState)(DetailsModalComponent)
 
 export default DetailsModal

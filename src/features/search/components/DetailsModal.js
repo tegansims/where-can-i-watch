@@ -6,15 +6,7 @@ import ModalLayout from "../../../layouts/ModalLayout"
 import ErrorState from "../../ui/components/ErrorState"
 import Loading from "../../ui/components/Loading"
 
-const DetailsToShow = ({
-  setModalVisible,
-  modalVisible,
-  details,
-  hasError,
-  isLoading,
-  navigation
-}) => {
-  console.log({ isLoading })
+const DetailsToShow = ({ setModalVisible, modalVisible, details }) => {
   const [showFront, setShowFront] = useState(true)
   const image = { uri: details?.title?.image?.url }
 
@@ -37,25 +29,27 @@ const DetailsToShow = ({
     </View>
   )
 
-  if (isLoading) return <Loading flex="auto" />
-  if (hasError) return <ErrorState navigation={navigation} />
+  const Description = () => (
+    <ScrollView>
+      <Text style={{ ...styles.modalText, fontSize: 24, fontWeight: "700" }}>
+        {details?.title?.title}
+      </Text>
+      <Text style={{ ...styles.modalText, fontSize: 18 }}>
+        {details?.plotOutline?.text}
+      </Text>
+      <Text style={{ ...styles.modalText, fontSize: 16 }}>
+        {details?.plotSummary?.text}
+      </Text>
+    </ScrollView>
+  )
 
   return (
     <>
       <Icons />
-      {!showFront && <Image source={image} style={styles.image} />}
-      {showFront && (
-        <ScrollView>
-          <Text style={{ ...styles.modalText, fontSize: 24 }}>
-            {details?.title?.title}
-          </Text>
-          <Text style={{ ...styles.modalText, fontSize: 18 }}>
-            {details?.plotOutline?.text}
-          </Text>
-          <Text style={{ ...styles.modalText, fontSize: 16 }}>
-            {details?.plotSummary?.text}
-          </Text>
-        </ScrollView>
+      {showFront ? (
+        <Description />
+      ) : (
+        <Image source={image} style={styles.image} />
       )}
     </>
   )
@@ -66,8 +60,18 @@ const DetailsModal = ({
   setModalVisible,
   details,
   hasError,
-  navigation
+  navigation,
+  isLoading
 }) => {
+  if (isLoading)
+    return (
+      <ModalLayout modalVisible={modalVisible}>
+        <Loading />
+      </ModalLayout>
+    )
+
+  if (hasError) return <ErrorState navigation={navigation} />
+
   return (
     <ModalLayout modalVisible={modalVisible}>
       <DetailsToShow
@@ -75,6 +79,7 @@ const DetailsModal = ({
         modalVisible={modalVisible}
         details={details}
         hasError={hasError}
+        isLoading={isLoading}
         navigation={navigation}
       />
     </ModalLayout>

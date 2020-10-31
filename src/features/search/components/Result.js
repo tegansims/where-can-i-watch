@@ -20,29 +20,26 @@ const Result = ({ item, loadDetails, navigation }) => {
         navigation={navigation}
         {...item}
       />
-      <View
-        flexDirection="row"
-        marginBottom={18}
-        alignItems="center"
-        onStartShouldSetResponder={handlePress}
-      >
-        <Image
-          source={{
-            uri: picture
-          }}
-          style={{ height: 80, width: 80, borderRadius: 8 }}
-        />
-        <Text
-          style={{
-            fontSize: 28,
-            fontWeight: "600",
-            paddingLeft: 14,
-            flex: 1
-          }}
-        >
-          {name}
-        </Text>
-      </View>
+      <TouchableOpacity onPress={handlePress}>
+        <View flexDirection="row" marginBottom={18} alignItems="center">
+          <Image
+            source={{
+              uri: picture
+            }}
+            style={{ height: 80, width: 80, borderRadius: 8 }}
+          />
+          <Text
+            style={{
+              fontSize: 28,
+              fontWeight: "600",
+              paddingLeft: 14,
+              flex: 1
+            }}
+          >
+            {name}
+          </Text>
+        </View>
+      </TouchableOpacity>
       {locations?.map(loc => (
         <TouchableOpacity
           key={loc.url}

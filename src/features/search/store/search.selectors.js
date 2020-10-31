@@ -9,3 +9,6 @@ export const getIsLoading = createSelector(searchState, state => state?.isLoadin
 export const getHasError = createSelector(searchState, state => state?.hasError)
 
 export const getDetails = createSelector(searchState, state => state?.details)
+
+export const getHasErrorDetails = createSelector(searchState, state => state?.hasErrorDetails)
+export const getIsLoadingDetails = createSelector(searchState, state => state?.isLoadingDetails)

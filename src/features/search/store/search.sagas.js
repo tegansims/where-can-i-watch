@@ -190,9 +190,64 @@ const MOCK_DETAILS_RES = {
   }
 }
 
+const res2 = {
+  data: {
+    certificates: {
+      US: [
+        {
+          certificate: "TV-MA",
+          country: "US"
+        }
+      ]
+    },
+    genres: ["Drama"],
+    id: "/title/tt7660850/",
+    plotOutline: {
+      author: "pravinhalmare-95852",
+      id: "/title/tt7660850/plot/po5330828",
+      text:
+        "The Roy family is known for controlling the biggest media and entertainment company in the world. However, their world changes when their father steps down from the company."
+    },
+    ratings: {
+      canRate: true,
+      otherRanks: [
+        {
+          id: "/chart/ratings/toptv",
+          label: "Top 250 TV",
+          rank: 161,
+          rankType: "topTv"
+        }
+      ],
+      rating: 8.6,
+      ratingCount: 38156
+    },
+    releaseDate: "2018-06-03",
+    title: {
+      "@type": "imdb.api.title.title",
+      id: "/title/tt7660850/",
+      image: {
+        height: 1481,
+        id: "/title/tt7660850/images/rm2038144001",
+        url:
+          "https://m.media-amazon.com/images/M/MV5BZDMyY2I0ZjEtMzc4Yi00MTQxLWI1MWYtOWJjNjIwMTMyYWFjXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+        width: 1000
+      },
+      nextEpisode: "/title/tt5791038/",
+      numberOfEpisodes: 21,
+      runningTimeInMinutes: 60,
+      seriesStartYear: 2018,
+      title: "Succession",
+      titleType: "tvSeries",
+      year: 2018
+    }
+  }
+}
+
 export function* loadSearchSaga(action) {
   try {
-    // const res = yield call(SearchService.loadSearch, {searchTerm: action.payload})
+    // const res = yield call(SearchService.loadSearch, {
+    //   searchTerm: action.payload
+    // })
     const res = MOCK_RES
     if (res) yield put(SearchActions.searchSuccess(res.data))
     else yield put(SearchActions.searchFail())
@@ -204,12 +259,9 @@ export function* loadSearchSaga(action) {
 
 export function* loadDetailsSaga(action) {
   try {
-    // console.log("::SAGA: ", action.payload)
-    const res = MOCK_DETAILS_RES
+    // const res = MOCK_DETAILS_RES
+    const res = res2
     // const res = yield call(SearchService.loadDetails, { id: action.payload })
-
-    // console.log('::SAGA saga res done')
-    // console.log("::SAGA res: ", res)
 
     if (res) yield put(SearchActions.loadDetailsSuccess(res.data))
     else yield put(SearchActions.loadDetailsFail())

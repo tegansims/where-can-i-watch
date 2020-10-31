@@ -4,9 +4,9 @@ import ResultsListComponent from "../components/ResultsList"
 
 const mapState = state => ({
   searchResults: SearchSelectors.getSearchResults(state),
-  hasError: SearchSelectors.getHasError(state)
+  hasError: SearchSelectors.getHasError(state),
+  isLoading: SearchSelectors.getIsLoading(state)
 })
-
 
 const Results = connect(mapState)(ResultsListComponent)
 
