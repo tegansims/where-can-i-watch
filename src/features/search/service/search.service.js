@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = "http://localhost:4000/"
+const BASE_URL = "http://192.168.0.3:4000/"
 
 export const loadSearch = async searchTerm => {
   const queryData = {
@@ -31,8 +31,7 @@ export const loadSearch = async searchTerm => {
   })
 }
 
-
-export const loadDetails = async ( id, countryCode = "GB" ) => {
+export const loadDetails = async (id, countryCode = "GB") => {
   const queryData = {
     query: `
       query {
