@@ -1,14 +1,11 @@
 import { connect } from "react-redux"
-import { SearchActions, SearchSelectors } from ".."
+import { SearchActions } from ".."
 import ResultComponent from "../components/Result"
 
-const mapState = state => ({})
-
 const mapDispatch = dispatch => ({
-  loadDetails: id => dispatch(SearchActions.loadDetails(id)),
-  handleSubmit: searchTerm => dispatch(SearchActions.search(searchTerm))
+  loadDetails: id => dispatch(SearchActions.loadDetails(id))
 })
 
-const Result = connect(mapState, mapDispatch)(ResultComponent)
+const Result = connect(null, mapDispatch)(ResultComponent)
 
 export default Result

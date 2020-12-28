@@ -1,7 +1,6 @@
 import { connect } from "react-redux"
-import { SearchActions, SearchSelectors } from ".."
+import { SearchActions } from ".."
 import SearchComponent from "../components/SearchComponent"
-
 
 const mapDispatch = dispatch => ({
   handleSubmit: searchTerm => dispatch(SearchActions.search(searchTerm))

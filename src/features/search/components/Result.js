@@ -4,12 +4,15 @@ import { TouchableOpacity } from "react-native-gesture-handler"
 import { Divider } from "react-native-paper"
 import DetailsModal from "../containers/DetailsModal"
 
-const Result = ({ item, loadDetails, navigation }) => {
+const Result = ({ item, loadDetails }) => {
   const { name, picture, locations, external_ids } = item
   const [modalVisible, setModalVisible] = useState(false)
+  const sortedLocations = locations.sort((a, b) =>
+    a.display_name.localeCompare(b.display_name)
+  )
 
-  const handlePress = () => {
-    loadDetails(external_ids.imdb.id)
+  const handlePress = async () => {
+    await loadDetails(external_ids.imdb.id)
     setModalVisible(true)
   }
   return (
@@ -17,7 +20,6 @@ const Result = ({ item, loadDetails, navigation }) => {
       <DetailsModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
-        navigation={navigation}
         {...item}
       />
       <TouchableOpacity onPress={handlePress}>
@@ -26,7 +28,7 @@ const Result = ({ item, loadDetails, navigation }) => {
             source={{
               uri: picture
             }}
-            style={{ height: 80, width: 80, borderRadius: 8 }}
+            style={{ height: 100, width: 100, borderRadius: 8 }}
           />
           <Text
             style={{
@@ -40,9 +42,9 @@ const Result = ({ item, loadDetails, navigation }) => {
           </Text>
         </View>
       </TouchableOpacity>
-      {locations?.map(loc => (
+      {sortedLocations?.map((loc, index) => (
         <TouchableOpacity
-          key={loc.url}
+          key={`${index}-${loc.url}`}
           onPress={() => Linking.openURL(loc.url)}
         >
           <Text

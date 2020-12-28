@@ -4,8 +4,8 @@ import Result from "../containers/Result"
 import Loading from "../../ui/components/Loading"
 import ErrorState from "../../ui/components/ErrorState"
 
-const renderItem = (item, navigation) => (
-  <Result {...item} navigation={navigation} />
+const renderItem = (item) => (
+  <Result {...item} />
 )
 
 const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
@@ -16,7 +16,7 @@ const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
         <ErrorState navigation={navigation} />
       </View>
     )
-  if (!searchResults.results.length)
+  if (!searchResults?.length)
     return (
       <View flex={1} justifyContent="center" alignItems="center">
         <ErrorState navigation={navigation} text="No results to show!" />
@@ -25,7 +25,7 @@ const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
   return (
     <View paddingVertical={24}>
       <FlatList
-        data={searchResults.results}
+        data={searchResults}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />

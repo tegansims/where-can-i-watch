@@ -6,9 +6,31 @@ import ModalLayout from "../../../layouts/ModalLayout"
 import ErrorState from "../../ui/components/ErrorState"
 import Loading from "../../ui/components/Loading"
 
-const DetailsToShow = ({ setModalVisible, modalVisible, details }) => {
-  const [showFront, setShowFront] = useState(true)
-  const image = { uri: details?.title?.image?.url }
+const HasErrorModal = ({ setModalVisible, modalVisible }) => (
+  <ModalLayout modalVisible={modalVisible}>
+    <View alignSelf="flex-end" paddingBottom={36}>
+      <View flexDirection="row">
+        <IconButton
+          icon="close"
+          color="black"
+          size={30}
+          onPress={() => setModalVisible(!modalVisible)}
+        />
+      </View>
+    </View>
+    <ErrorState fontColor="black" />
+  </ModalLayout>
+)
+
+const DetailsToShow = ({
+  setModalVisible,
+  modalVisible,
+  details,
+  showFront,
+  setShowFront
+}) => {
+  const image = { uri: details?.image }
+  const formatDate = date => date.slice(0, 4)
 
   const Icons = () => (
     <View alignSelf="flex-end">
@@ -16,13 +38,13 @@ const DetailsToShow = ({ setModalVisible, modalVisible, details }) => {
         <IconButton
           icon="rotate-3d-variant"
           color="black"
-          size={20}
+          size={30}
           onPress={() => setShowFront(!showFront)}
         />
         <IconButton
           icon="close"
           color="black"
-          size={20}
+          size={30}
           onPress={() => setModalVisible(!modalVisible)}
         />
       </View>
@@ -32,13 +54,17 @@ const DetailsToShow = ({ setModalVisible, modalVisible, details }) => {
   const Description = () => (
     <ScrollView>
       <Text style={{ ...styles.modalText, fontSize: 28 }}>
-        {details?.title?.title}
+        {details?.title}
+        <Text style={{ ...styles.modalText, fontSize: 22 }}>
+          {" "}
+          ({formatDate(details?.releaseDate)})
+        </Text>
       </Text>
       <Text style={{ ...styles.modalText, fontSize: 18, lineHeight: 20 }}>
-        {details?.plotOutline?.text}
+        {details?.plotOutline}
       </Text>
-      <Text style={{ ...styles.modalText, fontSize: 16}}>
-        {details?.plotSummary?.text}
+      <Text style={{ ...styles.modalText, fontSize: 16 }}>
+        {details?.plotSummary}
       </Text>
     </ScrollView>
   )
@@ -47,9 +73,13 @@ const DetailsToShow = ({ setModalVisible, modalVisible, details }) => {
     <>
       <Icons />
       {showFront ? (
-        <Description />
+        <Description setShowFront={setShowFront} showFront={showFront} />
       ) : (
-        <Image source={image} style={styles.image} />
+        <Image
+          source={image}
+          style={styles.image}
+          onPress={() => setShowFront(!showFront)}
+        />
       )}
     </>
   )
@@ -60,7 +90,6 @@ const DetailsModal = ({
   setModalVisible,
   details,
   hasError,
-  navigation,
   isLoading
 }) => {
   if (isLoading)
@@ -70,17 +99,27 @@ const DetailsModal = ({
       </ModalLayout>
     )
 
-  if (hasError) return <ErrorState navigation={navigation} />
-
+  if (hasError)
+    return (
+      <HasErrorModal
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      />
+    )
+  const [showFront, setShowFront] = useState(true)
   return (
-    <ModalLayout modalVisible={modalVisible}>
+    <ModalLayout
+      modalVisible={modalVisible}
+      callToAction={() => setShowFront(!showFront)}
+    >
       <DetailsToShow
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
         details={details}
         hasError={hasError}
         isLoading={isLoading}
-        navigation={navigation}
+        showFront={showFront}
+        setShowFront={setShowFront}
       />
     </ModalLayout>
   )

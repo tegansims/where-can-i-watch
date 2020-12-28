@@ -1,11 +1,11 @@
 import React from "react"
 import { Modal, StyleSheet, View } from "react-native"
 
-const ModalLayout = ({ modalVisible, children }) => (
-  <View style={styles.centeredView}>
+const ModalLayout = ({ modalVisible, callToAction, children }) => (
+  <View style={styles.centeredView} >
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>{children}</View>
+        <View style={styles.modalView} onStartShouldSetResponder={callToAction}>{children}</View>
       </View>
     </Modal>
   </View>
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.75,
     shadowRadius: 3.84,
     elevation: 5,
-    width: "85%", 
-    height: "60%"
+    width: "85%",
+    height: "65%"
   }
 })
 

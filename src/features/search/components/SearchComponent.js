@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { TextInput, Title } from "react-native-paper"
-import { View, Button, TouchableOpacity, Text } from "react-native"
+import { View, TouchableOpacity, Text } from "react-native"
 import BaseLayout from "../../../layouts/BaseLayout"
 import { useFonts, Karla_700Bold } from "@expo-google-fonts/karla"
 
@@ -10,8 +10,8 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
   })
   const [searchTerm, setSearchTerm] = useState("")
 
-  const handlePress = () => {
-    handleSubmit(searchTerm)
+  const handlePress = async () => {
+    await handleSubmit(searchTerm)
     navigation?.push("Results")
   }
 
