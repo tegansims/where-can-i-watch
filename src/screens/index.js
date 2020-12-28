@@ -1,9 +1,9 @@
 import Search from "./Search"
-import Another from "./Another"
+import About from "./About"
 import SplashScreen from "./SplashScreen"
 
 export default {
   Search,
-  Another, 
+  About, 
   SplashScreen
 }

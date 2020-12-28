@@ -2,8 +2,9 @@ import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
 import { View, Button } from "react-native"
 import { Text } from "react-native-paper"
+import AboutComponent from "../components/AboutComponent"
 
-const AnotherStack = createStackNavigator()
+const AboutStack = createStackNavigator()
 
 const ContactList = ({ navigation }) => (
   <View>
@@ -21,19 +22,19 @@ const SingleContact = () => (
   </View>
 )
 
-const Another = () => (
-  <AnotherStack.Navigator>
-    <AnotherStack.Screen
+const About = () => (
+  <AboutStack.Navigator>
+    <AboutStack.Screen
       name="ContactList"
-      component={ContactList}
+      component={AboutComponent}
       options={{ tabBarLabel: "ContactList!" }}
     />
-    <AnotherStack.Screen
+    <AboutStack.Screen
       name="SingleContact"
       component={SingleContact}
       options={{ tabBarLabel: "SingleContact!" }}
     />
-  </AnotherStack.Navigator>
+  </AboutStack.Navigator>
 )
 
-export default Another
+export default About

@@ -15,8 +15,8 @@ const SignedInContent = () => {
       if (route.name === "Search") {
         iconName = "search"
       }
-      if (route.name === "Another") {
-        iconName = "activity"
+      if (route.name === "About") {
+        iconName = "question"
       }
 
       return <Feather name={iconName} size={size} color={color} />
@@ -25,13 +25,14 @@ const SignedInContent = () => {
   return (
     <Tab.Navigator
       screenOptions={tabBarScreenOptions}
+      barStyle={{ backgroundColor: "#3E4E56" }} // not quite working
       tabBarOptions={{
         activeTintColor: "tomato",
         inactiveTintColor: "gray"
       }}
     >
       <Tab.Screen name="Search" component={screens.Search} />
-      <Tab.Screen name="Another" component={screens.Another} />
+      <Tab.Screen name="About" component={screens.About} />
     </Tab.Navigator>
   )
 }
@@ -45,14 +46,14 @@ const Main = () => {
   }, [setShowSplashScreen])
   if (showSplashScreen) return <screens.SplashScreen />
   return (
-    <screens.Search />
-    // <MainStack.Navigator>
-    //   <MainStack.Screen
-    //     name="Main Content"
-    //     component={SignedInContent}
-    //     options={{ headerMode: "none", headerShown: false }}
-    //   />
-    // </MainStack.Navigator>
+    // <screens.Search />
+    <MainStack.Navigator>
+      <MainStack.Screen
+        name="Main Content"
+        component={SignedInContent}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+    </MainStack.Navigator>
   )
 }
 
