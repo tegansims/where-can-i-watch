@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { AntDesign } from "@expo/vector-icons"
 import { createStackNavigator } from "@react-navigation/stack"
@@ -9,7 +9,7 @@ const MainStack = createStackNavigator()
 
 const SignedInContent = () => {
   const tabBarScreenOptions = ({ route }) => ({
-    tabBarIcon: ({ color, size }) => {
+    tabBarIcon: ({ color }) => {
       let iconName
 
       if (route.name === "Search") {
@@ -19,16 +19,19 @@ const SignedInContent = () => {
         iconName = "question"
       }
 
-      return <AntDesign name={iconName} size={size} color={color} />
+      return <AntDesign name={iconName} size={30} color={color} />
     }
   })
   return (
     <Tab.Navigator
       screenOptions={tabBarScreenOptions}
-      barStyle={{ backgroundColor: "#3E4E56" }} // not quite working
       tabBarOptions={{
         activeTintColor: "tomato",
-        inactiveTintColor: "gray"
+        inactiveTintColor: "white",
+        style: {
+          backgroundColor: "#3E4E56",
+          paddingTop: 5
+        }
       }}
     >
       <Tab.Screen name="Search" component={screens.Search} />
@@ -49,7 +52,6 @@ const Main = () => {
   if (showSplashScreen) return <screens.SplashScreen />
 
   return (
-    // <screens.Search />
     <MainStack.Navigator>
       <MainStack.Screen
         name="Main Content"

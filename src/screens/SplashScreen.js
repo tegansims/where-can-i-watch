@@ -1,6 +1,5 @@
 import React, { useRef } from "react"
 import { View, StyleSheet, ImageBackground, Text, Animated } from "react-native"
-import { useFonts, Karla_700Bold } from "@expo-google-fonts/karla"
 
 const image = require("../../assets/camera.jpg")
 
@@ -34,10 +33,7 @@ const SplashScreen = () => {
       useNativeDriver: true
     }).start()
   }
-  // let [fontsLoaded] = useFonts({
-  //   Karla_700Bold
-  // })
-  // if (!fontsLoaded) return null
+
   setTimeout(() => {
     fadeOut()
   }, 1500)

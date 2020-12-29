@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { SearchActions, SearchSelectors } from ".."
+import { SearchSelectors } from ".."
 import ResultsListComponent from "../components/ResultsList"
 
 const mapState = state => ({

@@ -8,12 +8,9 @@ import {
   StyleSheet
 } from "react-native"
 import BaseLayout from "../../../layouts/BaseLayout"
-import { useFonts, Karla_700Bold } from "@expo-google-fonts/karla"
 
 const SearchComponent = ({ handleSubmit, navigation }) => {
-  // let [fontsLoaded] = useFonts({
-  //   Karla_700Bold
-  // })
+
   const [searchTerm, setSearchTerm] = useState("")
   const fadeAnim = useRef(new Animated.Value(1)).current
 
@@ -42,8 +39,6 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
     }, 1000)
   }
 
-  // if (!fontsLoaded) return null
-
   return (
     <Animated.View
       style={[
@@ -67,7 +62,6 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
               fontSize: 38,
               textAlign: "center",
               paddingTop: 24,
-              // paddingBottom: 24,
               lineHeight: 50,
               color: "white"
             }}
