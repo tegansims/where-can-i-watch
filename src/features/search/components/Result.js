@@ -4,6 +4,8 @@ import { TouchableOpacity } from "react-native-gesture-handler"
 import { Divider } from "react-native-paper"
 import DetailsModal from "../containers/DetailsModal"
 
+const holdingImage = require("../../../../assets/adaptive-icon.png")
+
 const Result = ({ item, loadDetails }) => {
   const { name, picture, locations, external_ids } = item
   const [modalVisible, setModalVisible] = useState(false)
@@ -25,9 +27,11 @@ const Result = ({ item, loadDetails }) => {
       <TouchableOpacity onPress={handlePress}>
         <View flexDirection="row" marginBottom={18} alignItems="center">
           <Image
-            source={{
-              uri: picture
-            }}
+            source={
+              {
+                uri: picture
+              } || holdingImage
+            }
             style={{ height: 100, width: 100, borderRadius: 8 }}
           />
           <Text

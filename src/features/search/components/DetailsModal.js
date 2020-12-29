@@ -6,6 +6,8 @@ import ModalLayout from "../../../layouts/ModalLayout"
 import ErrorState from "../../ui/components/ErrorState"
 import Loading from "../../ui/components/Loading"
 
+const holdingImage = require("../../../../assets/adaptive-icon.png")
+
 const HasErrorModal = ({ setModalVisible, modalVisible }) => (
   <ModalLayout modalVisible={modalVisible}>
     <View alignSelf="flex-end" paddingBottom={36}>
@@ -29,7 +31,7 @@ const DetailsToShow = ({
   showFront,
   setShowFront
 }) => {
-  const image = { uri: details?.image }
+  const image = { uri: details?.image } || holdingImage
   const formatDate = date => date.slice(0, 4)
 
   const Icons = () => (
