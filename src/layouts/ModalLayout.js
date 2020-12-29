@@ -2,10 +2,15 @@ import React from "react"
 import { Modal, StyleSheet, View } from "react-native"
 
 const ModalLayout = ({ modalVisible, callToAction, children }) => (
-  <View style={styles.centeredView} >
+  <View style={styles.centeredView}>
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>
-        <View style={styles.modalView} onStartShouldSetResponder={callToAction}>{children}</View>
+        <View
+          style={styles.modalView}
+          // onStartShouldSetResponder={callToAction}
+        >
+          {children}
+        </View>
       </View>
     </Modal>
   </View>

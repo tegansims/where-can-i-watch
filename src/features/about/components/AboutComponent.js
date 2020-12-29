@@ -5,11 +5,11 @@ import BaseLayout from "../../../layouts/BaseLayout"
 import { useFonts, Karla_700Bold } from "@expo-google-fonts/karla"
 
 const AboutComponent = ({ handleSubmit, navigation }) => {
-  let [fontsLoaded] = useFonts({
-    Karla_700Bold
-  })
+  // let [fontsLoaded] = useFonts({
+  //   Karla_700Bold
+  // })
 
-  if (!fontsLoaded) return null
+  // if (!fontsLoaded) return null
 
   return (
     <BaseLayout>

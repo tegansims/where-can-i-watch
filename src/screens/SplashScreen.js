@@ -1,5 +1,5 @@
-import React from "react"
-import { View, StyleSheet, ImageBackground, Text } from "react-native"
+import React, { useRef } from "react"
+import { View, StyleSheet, ImageBackground, Text, Animated } from "react-native"
 import { useFonts, Karla_700Bold } from "@expo-google-fonts/karla"
 
 const image = require("../../assets/camera.jpg")
@@ -25,20 +25,39 @@ const styles = StyleSheet.create({
   }
 })
 const SplashScreen = () => {
-  let [fontsLoaded] = useFonts({
-    Karla_700Bold
-  })
-  if (!fontsLoaded) return null
+  const fadeAnim = useRef(new Animated.Value(1)).current
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 1500,
+      useNativeDriver: true
+    }).start()
+  }
+  // let [fontsLoaded] = useFonts({
+  //   Karla_700Bold
+  // })
+  // if (!fontsLoaded) return null
+  setTimeout(() => {
+    fadeOut()
+  }, 1500)
   return (
-    <View style={styles.container}>
-      <ImageBackground source={image} style={styles.image}>
-        <View paddingTop={28}>
-          <Text style={styles.text} >
-            Where Can I Watch...?
-          </Text>
-        </View>
-      </ImageBackground>
-    </View>
+    <Animated.View
+      style={[
+        styles.container,
+        {
+          opacity: fadeAnim 
+        }
+      ]}
+    >
+      <View style={styles.container}>
+        <ImageBackground source={image} style={styles.image}>
+          <View paddingTop={28}>
+            <Text style={styles.text}>Where Can I Watch...?</Text>
+          </View>
+        </ImageBackground>
+      </View>
+    </Animated.View>
   )
 }
 

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { Feather } from "@expo/vector-icons"
+import { AntDesign } from "@expo/vector-icons"
 import { createStackNavigator } from "@react-navigation/stack"
 import screens from "./src/screens"
 
@@ -13,13 +13,13 @@ const SignedInContent = () => {
       let iconName
 
       if (route.name === "Search") {
-        iconName = "search"
+        iconName = "search1"
       }
       if (route.name === "About") {
         iconName = "question"
       }
 
-      return <Feather name={iconName} size={size} color={color} />
+      return <AntDesign name={iconName} size={size} color={color} />
     }
   })
   return (
@@ -39,12 +39,15 @@ const SignedInContent = () => {
 
 const Main = () => {
   const [showSplashScreen, setShowSplashScreen] = useState(true)
+
   useEffect(() => {
-    setTimeout(function () {
+    setTimeout(() => {
       setShowSplashScreen(false)
     }, 3000)
   }, [setShowSplashScreen])
+
   if (showSplashScreen) return <screens.SplashScreen />
+
   return (
     // <screens.Search />
     <MainStack.Navigator>
