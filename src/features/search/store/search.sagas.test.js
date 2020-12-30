@@ -6,6 +6,8 @@ import { loadSearch, loadDetails } from "../service/search.service"
 
 import * as Actions from "./search.actions"
 
+expectSaga.DEFAULT_TIMEOUT = 3500; 
+
 const SEARCH_TERM = "paddington"
 const SEARCH_RESULTS = [
   {
