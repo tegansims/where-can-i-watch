@@ -31,7 +31,7 @@ const DetailsToShow = ({
   showFront,
   setShowFront
 }) => {
-  const image = { uri: details?.image } || holdingImage
+  const image = details?.image && { uri: details.image } || holdingImage
   const formatDate = date => date.slice(0, 4)
 
   const Icons = () => (

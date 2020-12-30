@@ -4,9 +4,7 @@ import Result from "../containers/Result"
 import Loading from "../../ui/components/Loading"
 import ErrorState from "../../ui/components/ErrorState"
 
-const renderItem = (item) => (
-  <Result {...item} />
-)
+const renderItem = item => <Result {...item} />
 
 const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
   if (isLoading) return <Loading />
@@ -27,7 +25,7 @@ const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
       <FlatList
         data={searchResults}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.external_ids.imdb.id}
       />
     </View>
   )
