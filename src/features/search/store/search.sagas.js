@@ -8,8 +8,8 @@ const NEW_MOCK_RES = {
       getMovieBySearchTerm: [
         {
           name: "Paddington 2",
-          // picture:
-          //   "https://utellyassets9-1.imgix.net/api/Images/8f83f8e5fc5df7fb078827f67659f858/Redirect?fit=crop&auto=compress&crop=faces,top",
+          picture:
+            "https://utellyassets9-1.imgix.net/api/Images/8f83f8e5fc5df7fb078827f67659f858/Redirect?fit=crop&auto=compress&crop=faces,top",
           locations: [
             {
               icon:
