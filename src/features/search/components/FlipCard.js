@@ -9,7 +9,7 @@ import {
 } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
 
-const AboutFlip = ({ details, image }) => {
+const FlipCard = ({ details, image }) => {
   const animatedValue = useRef(new Animated.Value(0)).current
   const [value, setValue] = useState(0)
   const flipCard = () => {
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AboutFlip
+export default FlipCard

@@ -1,6 +1,6 @@
 import React from "react"
 import ModalLayout from "../../../layouts/ModalLayout"
-import AboutFlip from "../../about/components/AboutFilp"
+import AboutFlip from "./FlipCard"
 import ErrorState from "../../ui/components/ErrorState"
 import Loading from "../../ui/components/Loading"
 
