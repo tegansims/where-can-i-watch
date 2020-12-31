@@ -128,7 +128,7 @@ const NEW_MOCK_DETAILS = {
         plotOutline:
           "Paddington (Ben Whishaw), now happily settled with the Brown family and a popular member of the local community, picks up a series of odd jobs to buy the perfect present for his Aunt Lucy's (Imelda Staunton's) 100th birthday, only for the gift to be stolen.",
         plotSummary:
-          "Paddington (Ben Whishaw) is happily settled with the Brown family in Windsor Gardens, where he has become a popular member of the community, spreading joy and marmalade wherever he goes. While searching for the perfect present for his beloved Aunt Lucy's (Imelda Staunton's) 100th birthday, Paddington spots a unique pop-up book in Mr. Gruber's antique shop, and embarks upon a series of odd jobs to buy it. But when the book is stolen, it's up to Paddington and the Browns to unmask the thief.",
+          "Paddington (Ben Whishaw) is happily settled with the Brown family in Windsor Gardens, where he has become a popular member of the community, spreading joy and marmalade wherever he goes. While searching for the perfect present for his beloved Aunt Lucy's (Imelda Staunton's) 100th birthday, Paddington spots a unique pop-up book in Mr. Gruber's antique shop, and embarks upon a series of odd jobs to buy it. But when the book is stolen, it's up to Paddington and the Browns to unmask the thief. Paddington (Ben Whishaw) is happily settled with the Brown family in Windsor Gardens, where he has become a popular member of the community, spreading joy and marmalade wherever he goes. While searching for the perfect present for his beloved Aunt Lucy's (Imelda Staunton's) 100th birthday, Paddington spots a unique pop-up book in Mr. Gruber's antique shop, and embarks upon a series of odd jobs to buy it. But when the book is stolen, it's up to Paddington and the Browns to unmask the thief.",
         image:
           "https://m.media-amazon.com/images/M/MV5BMmYwNWZlNzEtNjE4Zi00NzQ4LWI2YmUtOWZhNzZhZDYyNmVmXkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_.jpg"
       }
@@ -137,8 +137,8 @@ const NEW_MOCK_DETAILS = {
 }
 export function* loadSearchSaga(action) {
   try {
-    const res = yield call(SearchService.loadSearch, action.payload)
-    // const res = NEW_MOCK_RES
+    // const res = yield call(SearchService.loadSearch, action.payload)
+    const res = NEW_MOCK_RES
     if (res)
       yield put(SearchActions.searchSuccess(res.data.data.getMovieBySearchTerm))
     else yield put(SearchActions.searchFail())
@@ -149,8 +149,8 @@ export function* loadSearchSaga(action) {
 
 export function* loadDetailsSaga(action) {
   try {
-    const res = yield call(SearchService.loadDetails, action.payload)
-    // const res = NEW_MOCK_DETAILS
+    // const res = yield call(SearchService.loadDetails, action.payload)
+    const res = NEW_MOCK_DETAILS
 
     if (res)
       yield put(SearchActions.loadDetailsSuccess(res.data.data.getMovieDetails))

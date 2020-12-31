@@ -138,6 +138,13 @@ const API_LOAD = {
     }
   }
 }
+const API_DETAILS = {
+  data: {
+    data: {
+        getMovieDetails: DETAILS_RESULTS
+    }
+  }
+}
 describe("[Search] Sagas", () => {
   describe("#loadSearchSaga", () => {
     it("Fetches a search term search from the backend", async () => {
@@ -150,7 +157,7 @@ describe("[Search] Sagas", () => {
   })
   it("Fetches a details search from the backend", async () => {
     await expectSaga(loadDetailsSaga, Actions.loadDetails(IMDB_ID))
-      .provide([matchers.call.fn(loadDetails), API_LOAD])
+      .provide([matchers.call.fn(loadDetails), API_DETAILS])
       .put(Actions.loadDetailsSuccess(DETAILS_RESULTS))
       .dispatch(Actions.loadDetails(IMDB_ID))
       .run()

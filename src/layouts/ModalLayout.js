@@ -1,20 +1,34 @@
 import React from "react"
 import { Modal, StyleSheet, View } from "react-native"
+import { IconButton } from "react-native-paper"
 
-const ModalLayout = ({ modalVisible, callToAction, children }) => (
-  <View style={styles.centeredView}>
-    <Modal animationType="fade" transparent={true} visible={modalVisible}>
-      <View style={styles.centeredView}>
-        <View
-          style={styles.modalView}
-          // onStartShouldSetResponder={callToAction}
-        >
-          {children}
-        </View>
+const ModalLayout = ({ modalVisible, setModalVisible, children }) => {
+  const Icons = () => (
+    <View alignSelf="flex-end">
+      <View flexDirection="row">
+        <IconButton
+          icon="close"
+          color="black"
+          size={30}
+          onPress={() => setModalVisible(!modalVisible)}
+        />
       </View>
-    </Modal>
-  </View>
-)
+    </View>
+  )
+
+  return (
+    <View style={styles.centeredView}>
+      <Modal animationType="fade" transparent={true} visible={modalVisible}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Icons />
+            {children}
+          </View>
+        </View>
+      </Modal>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   centeredView: {
