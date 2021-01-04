@@ -4,7 +4,7 @@ import FlipCard from "./FlipCard"
 import ErrorState from "../../ui/components/ErrorState"
 import Loading from "../../ui/components/Loading"
 
-const holdingImage = require("../../../../assets/adaptive-icon.png")
+const holdingImage = require("../../../../assets/where-icon.png")
 
 const DetailsModal = ({
   modalVisible,

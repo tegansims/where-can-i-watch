@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler"
 import { Divider } from "react-native-paper"
 import DetailsModal from "../containers/DetailsModal"
 
-const holdingImage = require("../../../../assets/adaptive-icon.png")
+const holdingImage = require("../../../../assets/where-icon.png")
 
 const Result = ({ item, loadDetails }) => {
   const { name, picture, locations, external_ids } = item

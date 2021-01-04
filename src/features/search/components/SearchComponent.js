@@ -10,7 +10,6 @@ import {
 import BaseLayout from "../../../layouts/BaseLayout"
 
 const SearchComponent = ({ handleSubmit, navigation }) => {
-
   const [searchTerm, setSearchTerm] = useState("")
   const fadeAnim = useRef(new Animated.Value(1)).current
 
@@ -44,7 +43,7 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
       style={[
         styles.fadingContainer,
         {
-          opacity: fadeAnim 
+          opacity: fadeAnim
         }
       ]}
     >
@@ -56,19 +55,7 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
             // autoFocus
             keyboardAppearance="dark"
           />
-          <Title
-            style={{
-              fontFamily: "Karla_700Bold",
-              fontSize: 38,
-              textAlign: "center",
-              paddingTop: 24,
-              lineHeight: 50,
-              color: "white"
-            }}
-          >
-            What do you want to watch today?
-          </Title>
-          <View paddingTop={48}>
+          <View paddingTop={12}>
             <TouchableOpacity paddingTop={24} onPress={handlePress}>
               <Text
                 style={{
@@ -81,6 +68,18 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
               </Text>
             </TouchableOpacity>
           </View>
+          <Title
+            style={{
+              fontFamily: "Karla_700Bold",
+              fontSize: 38,
+              textAlign: "center",
+              paddingTop: 48,
+              lineHeight: 50,
+              color: "white"
+            }}
+          >
+            What do you want to watch today?
+          </Title>
         </View>
       </BaseLayout>
     </Animated.View>
