@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const BASE_URL = "http://192.168.0.3:4000/"
+// const BASE_URL = "http://192.168.0.3:4000/"
+const BASE_URL = "https://where-can-i-watch.herokuapp.com/"
 
 export const loadSearch = async searchTerm => {
   const queryData = {
