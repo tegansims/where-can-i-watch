@@ -5,11 +5,15 @@ import {
   Image,
   Animated,
   TouchableOpacity,
-  Text
+  Text,
+  Dimensions
 } from "react-native"
-import { ScrollView } from "react-native-gesture-handler"
+import { IconButton } from "react-native-paper"
 
-const FlipCard = ({ details, image }) => {
+const windowWidth = Dimensions.get("window").width
+const windowHeight = Dimensions.get("window").height
+
+const FlipCard = ({ details, image, modalVisible, setModalVisible }) => {
   const animatedValue = useRef(new Animated.Value(0)).current
   const [value, setValue] = useState(0)
   const flipCard = () => {
@@ -58,51 +62,73 @@ const FlipCard = ({ details, image }) => {
   }
   const formatDate = date => date.slice(0, 4)
 
-  return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.flipCard,
-          styles.squareCardContainer,
-          frontAnimatedStyle,
-          { opacity: frontOpacity }
-        ]}
-      >
-        <TouchableOpacity onPress={flipCard} style={styles.squareCardContainer}>
-          <ScrollView>
-            <Text style={{ ...styles.modalText, fontSize: 28 }}>
-              {details?.title}
-              <Text style={{ ...styles.modalText, fontSize: 22 }}>
-                {" "}
-                ({formatDate(details?.releaseDate)})
-              </Text>
-            </Text>
-            <Text style={{ ...styles.modalText, fontSize: 18, lineHeight: 20 }}>
-              {details?.plotOutline}
-            </Text>
-            <Text style={{ ...styles.modalText, fontSize: 16 }}>
-              {details?.plotSummary}
-            </Text>
-          </ScrollView>
-        </TouchableOpacity>
-      </Animated.View>
-      <Animated.View
-        style={[
-          backAnimatedStyle,
-          styles.squareCardContainer,
-          styles.flipCard,
-          styles.flipCardBack,
-          { opacity: backOpacity }
-        ]}
-      >
-        <TouchableOpacity
+  const Icons = () => (
+    <View alignSelf="flex-end">
+      <View flexDirection="row">
+        <IconButton
+          icon="rotate-3d-variant"
+          color="black"
+          size={30}
           onPress={flipCard}
-          style={[styles.squareCardContainer, { backgroundColor: "#FC515A" }]}
-        >
-          <Image source={image} style={styles.image} />
-        </TouchableOpacity>
-      </Animated.View>
+        />
+        <IconButton
+          icon="close"
+          color="black"
+          size={30}
+          onPress={() => setModalVisible(!modalVisible)}
+        />
+      </View>
     </View>
+  )
+
+  return (
+    <>
+      <Icons />
+      <View style={styles.container}>
+        <Animated.ScrollView
+          style={[frontAnimatedStyle, { opacity: frontOpacity }]}
+        >
+          <View style={[styles.flipCard, styles.squareCardContainer]}>
+            <TouchableOpacity
+              onPress={flipCard}
+              style={styles.squareCardContainer}
+            >
+              <Text style={{ ...styles.modalText, fontSize: 28 }}>
+                {details?.title}
+                <Text style={{ ...styles.modalText, fontSize: 22 }}>
+                  {" "}
+                  ({formatDate(details?.releaseDate)})
+                </Text>
+              </Text>
+              <Text
+                style={{ ...styles.modalText, fontSize: 18, lineHeight: 20 }}
+              >
+                {details?.plotOutline}
+              </Text>
+              <Text style={{ ...styles.modalText, fontSize: 16 }}>
+                {details?.plotSummary}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </Animated.ScrollView>
+        <Animated.ScrollView
+          style={[
+            backAnimatedStyle,
+            styles.flipCardBack,
+            { opacity: backOpacity }
+          ]}
+        >
+          <View style={[styles.flipCard, styles.squareCardContainer]}>
+            <TouchableOpacity
+              onPress={flipCard}
+              style={styles.squareCardContainer}
+            >
+              <Image source={image} style={styles.image} />
+            </TouchableOpacity>
+          </View>
+        </Animated.ScrollView>
+      </View>
+    </>
   )
 }
 
@@ -110,16 +136,17 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    flex: 1
+    flex: 1,
+    marginRight: -15
   },
   squareCardContainer: {
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",
-    width: "100%"
+    flex: 1
   },
   flipCard: {
-    backfaceVisibility: "hidden"
+    backfaceVisibility: "hidden",
+    marginRight: 15
   },
   flipCardBack: {
     position: "absolute",
@@ -127,10 +154,9 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: "100%",
-    width: "100%",
-    borderRadius: 4,
-    resizeMode: "cover"
+    height: windowHeight * 0.5,
+    width: windowWidth * 0.65,
+    borderRadius: 4
   },
   modalText: {
     fontWeight: "600",

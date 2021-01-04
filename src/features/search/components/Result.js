@@ -12,7 +12,7 @@ const Result = ({ item, loadDetails }) => {
   const sortedLocations = locations.sort((a, b) =>
     a.display_name.localeCompare(b.display_name)
   )
-  
+
   const handlePress = async () => {
     await loadDetails(external_ids.imdb.id)
     setModalVisible(true)
@@ -28,9 +28,10 @@ const Result = ({ item, loadDetails }) => {
         <View flexDirection="row" marginBottom={18} alignItems="center">
           <Image
             source={
-              picture && {
+              (picture && {
                 uri: picture
-              } || holdingImage
+              }) ||
+              holdingImage
             }
             style={{ height: 100, width: 100, borderRadius: 8 }}
           />

@@ -2,7 +2,12 @@ import React from "react"
 import { Modal, StyleSheet, View } from "react-native"
 import { IconButton } from "react-native-paper"
 
-const ModalLayout = ({ modalVisible, setModalVisible, children }) => {
+const ModalLayout = ({
+  modalVisible,
+  setModalVisible,
+  showIcons = true,
+  children
+}) => {
   const Icons = () => (
     <View alignSelf="flex-end">
       <View flexDirection="row">
@@ -21,7 +26,7 @@ const ModalLayout = ({ modalVisible, setModalVisible, children }) => {
       <Modal animationType="fade" transparent={true} visible={modalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Icons />
+            {showIcons && <Icons />}
             {children}
           </View>
         </View>

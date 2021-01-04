@@ -1,6 +1,6 @@
 import React from "react"
 import ModalLayout from "../../../layouts/ModalLayout"
-import AboutFlip from "./FlipCard"
+import FlipCard from "./FlipCard"
 import ErrorState from "../../ui/components/ErrorState"
 import Loading from "../../ui/components/Loading"
 
@@ -35,8 +35,17 @@ const DetailsModal = ({
   const image = (details?.image && { uri: details.image }) || holdingImage
 
   return (
-    <ModalLayout modalVisible={modalVisible} setModalVisible={setModalVisible}>
-      <AboutFlip details={details} image={image} />
+    <ModalLayout
+      showIcons={false}
+      modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
+    >
+      <FlipCard
+        details={details}
+        image={image}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </ModalLayout>
   )
 }
