@@ -68,7 +68,7 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
                 alignItems="center"
                 justifyContent="space-between"
                 style={{
-                  paddingHorizontal: 8,
+                  paddingHorizontal: 12,
                   backgroundColor: "white",
                   borderRadius: 3,
                   width: "100%"

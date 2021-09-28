@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from "redux-saga/effects"
 
-import SearchService from "../service/search.service"
-import SearchActions from "./search.actions"
+import * as SearchService from "../service/search.service"
+import * as SearchActions from "./search.actions"
 
 const NEW_MOCK_RES = {
   data: {
@@ -120,8 +120,8 @@ const NEW_MOCK_DETAILS = {
 }
 export function* loadSearchSaga(action) {
   try {
-    const res = yield call(SearchService.loadSearch, action.payload)
-    // const res = NEW_MOCK_RES
+    // const res = yield call(SearchService.loadSearch, action.payload)
+    const res = NEW_MOCK_RES
     if (res)
       yield put(SearchActions.searchSuccess(res.data.data.getMovieBySearchTerm))
     else yield put(SearchActions.searchFail())
@@ -132,9 +132,10 @@ export function* loadSearchSaga(action) {
 
 export function* loadDetailsSaga(action) {
   try {
-    const res = yield call(SearchService.loadDetails, action.payload)
-    // const res = NEW_MOCK_DETAILS
-
+    console.log(action.payload)
+    // const res = yield call(SearchService.loadDetails, action.payload)
+    const res = NEW_MOCK_DETAILS
+    console.log({res})
     if (res)
       yield put(SearchActions.loadDetailsSuccess(res.data.data.getMovieDetails))
     else yield put(SearchActions.loadDetailsFail())

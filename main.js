@@ -12,15 +12,13 @@ const SignedInContent = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "white",
-        tabBarStyle: [
-          {
-            display: "flex",
-            backgroundColor: "#3E4E56",
-            paddingVertical: 5
-          },
-          null
-        ],
+        tabBarInactiveTintColor: "#ccc",
+        tabBarStyle: {
+          display: "flex",
+          backgroundColor: "#3E4E56",
+          paddingVertical: 5
+        },
+
         headerMode: "none",
         headerShown: false,
         tabBarShowLabel: false

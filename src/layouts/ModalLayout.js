@@ -1,6 +1,8 @@
 import React from "react"
-import { Modal, StyleSheet, View } from "react-native"
+import { Modal, StyleSheet, View, Dimensions } from "react-native"
 import { IconButton } from "react-native-paper"
+
+const windowWidth = Dimensions.get("window").width
 
 const ModalLayout = ({
   modalVisible,
@@ -28,7 +30,7 @@ const ModalLayout = ({
           style={{ ...styles.centeredView, backgroundColor: "#00000044" }}
           onStartShouldSetResponder={() => setModalVisible(false)}
         >
-          <View style={{ ...styles.centeredView }}>
+          <View style={{ ...styles.centeredView }} width={windowWidth}>
             <View style={styles.modalView}>
               {showIcons && <Icons />}
               {children}

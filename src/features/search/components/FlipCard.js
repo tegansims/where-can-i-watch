@@ -137,8 +137,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
-    marginRight: -15
+    flex: 1
   },
   squareCardContainer: {
     alignItems: "center",
@@ -146,8 +145,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   flipCard: {
-    backfaceVisibility: "hidden",
-    marginRight: 15
+    backfaceVisibility: "hidden"
   },
   flipCardBack: {
     position: "absolute",
@@ -157,7 +155,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     height: windowHeight * 0.5,
-    width: windowWidth * 0.65,
+    width: windowWidth * 0.75,
     borderRadius: 4
   },
   modalText: {
