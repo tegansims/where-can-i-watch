@@ -5,7 +5,7 @@ const BaseLayout = ({ children, bg = "#3E4E56" }) => (
   <View
     style={{
       paddingHorizontal: 24,
-      paddingVertical: 12,
+      paddingTop: 24,
       backgroundColor: bg,
       flex: 1
     }}

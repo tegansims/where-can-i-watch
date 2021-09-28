@@ -6,7 +6,18 @@ import Results from "../views/Results"
 const SearchStack = createStackNavigator()
 
 const Search = () => (
-  <SearchStack.Navigator>
+  <SearchStack.Navigator
+    screenOptions={{
+      activeTintColor: "tomato",
+      inactiveTintColor: "white",
+      style: {
+        backgroundColor: "#3E4E56",
+        paddingTop: 5
+      },
+      headerMode: "none",
+      headerShown: false
+    }}
+  >
     <SearchStack.Screen
       name="Search"
       component={SearchContainer}

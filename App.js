@@ -2,9 +2,13 @@ import React from "react"
 import { View, Text } from "react-native"
 import { Provider as StoreProvider } from "react-redux"
 import { NavigationContainer } from "@react-navigation/native"
-import { useFonts, Karla_400Regular, Karla_700Bold } from "@expo-google-fonts/karla"
-import { AppLoading } from "expo";
-import { setCustomText } from 'react-native-global-props';
+import {
+  useFonts,
+  Karla_400Regular,
+  Karla_700Bold
+} from "@expo-google-fonts/karla"
+import AppLoading from "expo-app-loading"
+import { setCustomText } from "react-native-global-props"
 
 import store from "./src/store"
 import Main from "./main"
@@ -18,12 +22,12 @@ const GenericErrorFallback = () => (
 
 const App = () => {
   let [fontsLoaded] = useFonts({
-    Karla_400Regular, 
+    Karla_400Regular,
     Karla_700Bold
   })
 
-  const customTextProps = { 
-    style: { 
+  const customTextProps = {
+    style: {
       fontFamily: "Karla_400Regular",
       color: "white"
     }
@@ -31,15 +35,15 @@ const App = () => {
 
   if (!fontsLoaded) return <AppLoading />
 
-  setCustomText(customTextProps);
-  
+  setCustomText(customTextProps)
+
   return (
     <ErrorBoundary fallback={GenericErrorFallback}>
-        <StoreProvider store={store}>
-          <NavigationContainer>
-            <Main />
-          </NavigationContainer>
-        </StoreProvider>
+      <StoreProvider store={store}>
+        <NavigationContainer>
+          <Main />
+        </NavigationContainer>
+      </StoreProvider>
     </ErrorBoundary>
   )
 }

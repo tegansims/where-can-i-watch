@@ -29,11 +29,15 @@ const LinkedText = ({ link, children }) => (
 
 const AboutComponent = () => (
   <BaseLayout>
-    <ScrollView justifyContent="center" flex={1}>
+    <ScrollView
+      justifyContent="center"
+      flex={1}
+      showsVerticalScrollIndicator={false}
+    >
       <Title
         style={{
           fontFamily: "Karla_700Bold",
-          fontSize: 38,
+          fontSize: 32,
           textAlign: "center",
           paddingTop: 48,
           paddingBottom: 24,

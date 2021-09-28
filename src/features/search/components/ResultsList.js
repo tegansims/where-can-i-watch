@@ -26,6 +26,7 @@ const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
         data={searchResults}
         renderItem={renderItem}
         keyExtractor={item => item.external_ids.imdb.id}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   )

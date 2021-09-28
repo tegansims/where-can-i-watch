@@ -71,7 +71,7 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
           <Title
             style={{
               fontFamily: "Karla_700Bold",
-              fontSize: 38,
+              fontSize: 32,
               textAlign: "center",
               paddingTop: 48,
               lineHeight: 50,

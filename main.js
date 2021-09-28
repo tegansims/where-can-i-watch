@@ -8,34 +8,47 @@ const Tab = createBottomTabNavigator()
 const MainStack = createStackNavigator()
 
 const SignedInContent = () => {
-  const tabBarScreenOptions = ({ route }) => ({
-    tabBarIcon: ({ color }) => {
-      let iconName
-
-      if (route.name === "Search") {
-        iconName = "search1"
-      }
-      if (route.name === "About") {
-        iconName = "question"
-      }
-
-      return <AntDesign name={iconName} size={30} color={color} />
-    }
-  })
   return (
     <Tab.Navigator
-      screenOptions={tabBarScreenOptions}
-      tabBarOptions={{
-        activeTintColor: "tomato",
-        inactiveTintColor: "white",
-        style: {
-          backgroundColor: "#3E4E56",
-          paddingTop: 5
-        }
+      screenOptions={{
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "white",
+        tabBarStyle: [
+          {
+            display: "flex",
+            backgroundColor: "#3E4E56",
+            paddingVertical: 5
+          },
+          null
+        ],
+        headerMode: "none",
+        headerShown: false,
+
+        // activeTintColor: "tomato",
+        // inactiveTintColor: "white",
+        showLabel: false
       }}
     >
-      <Tab.Screen name="Search" component={screens.Search} />
-      <Tab.Screen name="About" component={screens.About} />
+      <Tab.Screen
+        name="SearchTab"
+        component={screens.Search}
+        options={{
+          tabBarLabel: "Search",
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="search1" size={30} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen
+        name="AboutTab"
+        component={screens.About}
+        options={{
+          tabBarLabel: "About",
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="question" size={30} color={color} />
+          )
+        }}
+      />
     </Tab.Navigator>
   )
 }
