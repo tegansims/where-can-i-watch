@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { View, Image, Text, Linking } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
-import { Divider } from "react-native-paper"
 import DetailsModal from "../containers/DetailsModal"
 
 const holdingImage = require("../../../../assets/where-icon.png")
@@ -62,7 +61,7 @@ const Result = ({ item, loadDetails }) => {
           </Text>
         </TouchableOpacity>
       ))}
-      <Divider style={{ marginVertical: 12, height: 1, color: "white" }} />
+      
     </>
   )
 }

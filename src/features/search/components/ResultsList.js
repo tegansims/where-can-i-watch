@@ -1,5 +1,7 @@
 import React from "react"
 import { FlatList, View } from "react-native"
+import { Divider } from "react-native-paper"
+
 import Result from "../containers/Result"
 import Loading from "../../ui/components/Loading"
 import ErrorState from "../../ui/components/ErrorState"
@@ -27,6 +29,9 @@ const ResultsList = ({ searchResults, hasError, navigation, isLoading }) => {
         renderItem={renderItem}
         keyExtractor={item => item.external_ids.imdb.id}
         showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => (
+          <Divider style={{ marginVertical: 12, height: 2, color: "white" }} />
+        )}
       />
     </View>
   )

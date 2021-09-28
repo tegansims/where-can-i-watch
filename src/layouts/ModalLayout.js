@@ -22,12 +22,17 @@ const ModalLayout = ({
   )
 
   return (
-    <View style={styles.centeredView} >
+    <View style={{ ...styles.centeredView }}>
       <Modal animationType="fade" transparent={true} visible={modalVisible}>
-        <View style={{ ...styles.centeredView, backgroundColor: "#00000044" }} onStartShouldSetResponder={()=>setModalVisible(false)}>
-          <View style={styles.modalView}>
-            {showIcons && <Icons />}
-            {children}
+        <View
+          style={{ ...styles.centeredView, backgroundColor: "#00000044" }}
+          onStartShouldSetResponder={() => setModalVisible(false)}
+        >
+          <View style={{ ...styles.centeredView }}>
+            <View style={styles.modalView}>
+              {showIcons && <Icons />}
+              {children}
+            </View>
           </View>
         </View>
       </Modal>

@@ -93,6 +93,23 @@ const FlipCard = ({ details, image, modalVisible, setModalVisible }) => {
               onPress={flipCard}
               style={styles.squareCardContainer}
             >
+              <Image source={image} style={styles.image} />
+            </TouchableOpacity>
+          </View>
+        </Animated.ScrollView>
+        <Animated.ScrollView
+          style={[
+            backAnimatedStyle,
+            styles.flipCardBack,
+            { opacity: backOpacity }
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={[styles.flipCard, styles.squareCardContainer]}>
+            <TouchableOpacity
+              onPress={flipCard}
+              style={styles.squareCardContainer}
+            >
               <Text style={{ ...styles.modalText, fontSize: 28 }}>
                 {details?.title}
                 <Text style={{ ...styles.modalText, fontSize: 22 }}>
@@ -108,22 +125,6 @@ const FlipCard = ({ details, image, modalVisible, setModalVisible }) => {
               <Text style={{ ...styles.modalText, fontSize: 16 }}>
                 {details?.plotSummary}
               </Text>
-            </TouchableOpacity>
-          </View>
-        </Animated.ScrollView>
-        <Animated.ScrollView
-          style={[
-            backAnimatedStyle,
-            styles.flipCardBack,
-            { opacity: backOpacity }
-          ]}
-        >
-          <View style={[styles.flipCard, styles.squareCardContainer]}>
-            <TouchableOpacity
-              onPress={flipCard}
-              style={styles.squareCardContainer}
-            >
-              <Image source={image} style={styles.image} />
             </TouchableOpacity>
           </View>
         </Animated.ScrollView>
@@ -150,7 +151,8 @@ const styles = StyleSheet.create({
   },
   flipCardBack: {
     position: "absolute",
-    top: 0
+    top: 0,
+    height: windowHeight * 0.5
   },
   image: {
     flex: 1,

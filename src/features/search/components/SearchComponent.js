@@ -5,7 +5,10 @@ import {
   TouchableOpacity,
   Text,
   Animated,
-  StyleSheet
+  StyleSheet,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native"
 import BaseLayout from "../../../layouts/BaseLayout"
 
@@ -48,39 +51,47 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
       ]}
     >
       <BaseLayout>
-        <View justifyContent="center" flex={1}>
-          <TextInput
-            onChangeText={text => setSearchTerm(text)}
-            value={searchTerm}
-            // autoFocus
-            keyboardAppearance="dark"
-          />
-          <View paddingTop={12}>
-            <TouchableOpacity paddingTop={24} onPress={handlePress}>
-              <Text
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={{ flex: 1, width: "100%" }}
+        >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View justifyContent="center" flex={1}>
+              <Title
                 style={{
-                  fontSize: 24,
-                  fontWeight: "600",
-                  textAlign: "center"
+                  fontFamily: "Karla_700Bold",
+                  fontSize: 32,
+                  textAlign: "center",
+                  paddingBottom: 48,
+                  lineHeight: 50,
+                  color: "white"
                 }}
               >
-                Search
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <Title
-            style={{
-              fontFamily: "Karla_700Bold",
-              fontSize: 32,
-              textAlign: "center",
-              paddingTop: 48,
-              lineHeight: 50,
-              color: "white"
-            }}
-          >
-            What do you want to watch today?
-          </Title>
-        </View>
+                What do you want to watch today?
+              </Title>
+              <TextInput
+                onChangeText={text => setSearchTerm(text)}
+                value={searchTerm}
+                autoFocus
+                keyboardAppearance="dark"
+              />
+              <View paddingTop={12}>
+                <TouchableOpacity paddingTop={24} onPress={handlePress}>
+                  <Text
+                    style={{
+                      fontSize: 24,
+                      fontWeight: "600",
+                      textAlign: "center",
+                      color: 'tomato'
+                    }}
+                  >
+                    Search
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
       </BaseLayout>
     </Animated.View>
   )

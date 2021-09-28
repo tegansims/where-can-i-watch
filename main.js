@@ -23,17 +23,13 @@ const SignedInContent = () => {
         ],
         headerMode: "none",
         headerShown: false,
-
-        // activeTintColor: "tomato",
-        // inactiveTintColor: "white",
-        showLabel: false
+        tabBarShowLabel: false
       }}
     >
       <Tab.Screen
         name="SearchTab"
         component={screens.Search}
         options={{
-          tabBarLabel: "Search",
           tabBarIcon: ({ color }) => (
             <AntDesign name="search1" size={30} color={color} />
           )
@@ -43,7 +39,6 @@ const SignedInContent = () => {
         name="AboutTab"
         component={screens.About}
         options={{
-          tabBarLabel: "About",
           tabBarIcon: ({ color }) => (
             <AntDesign name="question" size={30} color={color} />
           )
