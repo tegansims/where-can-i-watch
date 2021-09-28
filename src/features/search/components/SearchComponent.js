@@ -1,14 +1,15 @@
 import React, { useState, useRef } from "react"
-import { Title, TextInput } from "react-native-paper"
+import { Title } from "react-native-paper"
+import { AntDesign } from "@expo/vector-icons"
+
 import {
   View,
   TouchableOpacity,
-  Text,
   Animated,
-  StyleSheet,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  TextInput
 } from "react-native"
 import BaseLayout from "../../../layouts/BaseLayout"
 
@@ -42,14 +43,7 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
   }
 
   return (
-    <Animated.View
-      style={[
-        styles.fadingContainer,
-        {
-          opacity: fadeAnim
-        }
-      ]}
-    >
+    <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
       <BaseLayout>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -63,30 +57,37 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
                   fontSize: 32,
                   textAlign: "center",
                   paddingBottom: 48,
-                  lineHeight: 50,
+                  lineHeight: 40,
                   color: "white"
                 }}
               >
                 What do you want to watch today?
               </Title>
-              <TextInput
-                onChangeText={text => setSearchTerm(text)}
-                value={searchTerm}
-                autoFocus
-                keyboardAppearance="dark"
-              />
-              <View paddingTop={12}>
-                <TouchableOpacity paddingTop={24} onPress={handlePress}>
-                  <Text
-                    style={{
-                      fontSize: 24,
-                      fontWeight: "600",
-                      textAlign: "center",
-                      color: 'tomato'
-                    }}
-                  >
-                    Search
-                  </Text>
+              <View
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="space-between"
+                style={{
+                  paddingHorizontal: 8,
+                  backgroundColor: "white",
+                  borderRadius: 3,
+                  width: "100%"
+                }}
+              >
+                <TextInput
+                  onChangeText={text => setSearchTerm(text)}
+                  value={searchTerm}
+                  autoFocus
+                  keyboardAppearance="dark"
+                  style={{
+                    backgroundColor: "white",
+                    width: "90%",
+                    minHeight: 50
+                  }}
+                  selectionColor="tomato"
+                />
+                <TouchableOpacity onPress={() => handlePress(searchTerm)}>
+                  <AntDesign name="search1" size={28} color="tomato" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -96,19 +97,6 @@ const SearchComponent = ({ handleSubmit, navigation }) => {
     </Animated.View>
   )
 }
-const styles = StyleSheet.create({
-  fadingContainer: {
-    flex: 1
-  },
-  fadingText: {
-    fontSize: 28,
-    textAlign: "center",
-    margin: 10
-  },
-  buttonRow: {
-    flexDirection: "row",
-    marginVertical: 16
-  }
-})
+
 
 export default SearchComponent
