@@ -132,10 +132,8 @@ export function* loadSearchSaga(action) {
 
 export function* loadDetailsSaga(action) {
   try {
-    console.log(action.payload)
     // const res = yield call(SearchService.loadDetails, action.payload)
     const res = NEW_MOCK_DETAILS
-    console.log({res})
     if (res)
       yield put(SearchActions.loadDetailsSuccess(res.data.data.getMovieDetails))
     else yield put(SearchActions.loadDetailsFail())
