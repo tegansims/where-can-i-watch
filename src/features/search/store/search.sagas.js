@@ -120,8 +120,8 @@ const NEW_MOCK_DETAILS = {
 }
 export function* loadSearchSaga(action) {
   try {
-    // const res = yield call(SearchService.loadSearch, action.payload)
-    const res = NEW_MOCK_RES
+    const res = yield call(SearchService.loadSearch, action.payload)
+    // const res = NEW_MOCK_RES
     if (res)
       yield put(SearchActions.searchSuccess(res.data.data.getMovieBySearchTerm))
     else yield put(SearchActions.searchFail())
@@ -132,8 +132,8 @@ export function* loadSearchSaga(action) {
 
 export function* loadDetailsSaga(action) {
   try {
-    // const res = yield call(SearchService.loadDetails, action.payload)
-    const res = NEW_MOCK_DETAILS
+    const res = yield call(SearchService.loadDetails, action.payload)
+    // const res = NEW_MOCK_DETAILS
     if (res)
       yield put(SearchActions.loadDetailsSuccess(res.data.data.getMovieDetails))
     else yield put(SearchActions.loadDetailsFail())
